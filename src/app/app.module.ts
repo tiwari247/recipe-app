@@ -12,6 +12,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { CoreModule } from './core/core.module';
 import { DropDownDirective } from './directives/dropdown.directive';
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducers';
 // import { AuthInterceptor } from './shared/auth.interceptor';
 
 
@@ -30,7 +32,8 @@ import { DropDownDirective } from './directives/dropdown.directive';
     AuthModule,
     ShoppingListModule,
     AuthRoutingModule,
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot({shoppingList: shoppingListReducer})
   ],
   bootstrap: [AppComponent]
 })

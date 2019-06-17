@@ -12,10 +12,11 @@ export class RecipeService{
     //https://ng-recipe-book-f6ca6.firebaseio.com/
     recipes:Recipe[] = [];
     recipesChanged = new Subject<Recipe[]>();
-    constructor(private slService: ShoppingListService, 
+    constructor(
         // private http:Http,
         private httpClient:HttpClient,
-        private authService:AuthService){
+        private authService:AuthService,
+        ){
         this.recipes = [
             new Recipe("Pasta", "Pasta was first perfected by CPT", "https://ohsheglows.com/wp-content/uploads/2017/02/10minuteveganpasta-6481.jpg", [new Ingredient("Chat Masala", 3), new Ingredient("Meetha Masala", 2)]),
             new Recipe("Maggie", "Maggie is indian food originated in Uttrakhand by a person named CPT", "https://craftlog.com/m/i/3805446=s1280=h960", [new Ingredient("Chat Masala", 1), new Ingredient("Khatta Masala", 1)]),
@@ -28,9 +29,6 @@ export class RecipeService{
         return this.recipes.slice();
     }
 
-    sendIngredients(ingredients: Ingredient[]){//Send ingredients to Shopping List service
-        this.slService.addIngredients(ingredients);
-    }
 
     getRecipe(index:number){
         return this.recipes[index];
